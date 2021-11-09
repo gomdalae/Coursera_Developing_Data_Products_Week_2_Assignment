@@ -1,0 +1,36 @@
+---
+title: "MyFirstLeafletMap"
+author: "Choi Seungyong"
+date: '2021 11 9 '
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+The source code is available at [GitHub](https://github.com/gomdalae/Coursera_Developing_Data_Products_Week_2_Assignment/). [Just click here!](https://github.com/gomdalae/Coursera_Developing_Data_Products_Week_2_Assignment/)
+
+## My First Leaflet Map
+Create a leaflet map object.
+```{r cars}
+library(leaflet)
+map <- leaflet() %>% addTiles()
+
+```
+
+Create a marker with a picture of Gyeongbokgung Palace and a link to its homepage.
+```{r}
+GyeongbokgungPalaceIcon <- makeIcon(
+   iconUrl = "https://www.royalpalace.go.kr/content/images/data/data_03_01_15.jpg",
+   iconWidth = 30*408/255, iconHeight = 30,
+   iconAnchorX = 30*408/255/2, iconAnchorY = 30/2
+)
+```
+
+Add the marker to the map and display the map.
+```{r}
+GyeongbokgungPalacePopup <- c("<a href= 'https://www.royalpalace.go.kr/' >Gyeongbokgung Palace<br><img src='https://www.royalpalace.go.kr/content/images/data/data_03_01_15.jpg' width='210' height='132'  alt='Foto Corps de Logis' title='Foto Corps de Logi'></a>")
+map %>%
+   addTiles() %>%
+   addMarkers(lat=37.57971752866262, lng=126.9770689575242, popup = GyeongbokgungPalacePopup)
+```
